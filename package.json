@@ -1,5 +1,8 @@
 {
-    "main": "./dist/src/index",
+    "name": "jsite-utils",
+    "version": "1.1.0",
+    "description": "Utility module for the JSite package",
+    "main": "index.js",
     "scripts": {
         "clean": "tsc && node dist/src/clean",
         "build": "npm run clean && tsc",
@@ -12,5 +15,7 @@
         "@types/node": "^14.0.23",
         "chai": "^4.2.0",
         "mocha": "^8.0.1"
-    }
+    },
+    "author": "Luke Wilson <lukesrw@gmail.com>",
+    "license": "MIT"
 }
