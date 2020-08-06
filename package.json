@@ -2,7 +2,7 @@
     "name": "jsite-utils",
     "version": "1.2.0",
     "description": "Utility module for the JSite package",
-    "main": "index.js",
+    "main": "./dist/src/index.js",
     "scripts": {
         "clean": "tsc && node dist/src/clean",
         "build": "npm run clean && tsc",
