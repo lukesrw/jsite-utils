@@ -16,10 +16,6 @@ let strings: {
     sep: "`"
 };
 
-export function arrayConcat(arrays: Array<never>[]): any[] {
-    return [].concat(...arrays);
-}
-
 export function arrayToObject(array: Generic.Object[], field = "id") {
     let object: Generic.Object = {};
     if (Array.isArray(array)) {
@@ -31,48 +27,6 @@ export function arrayToObject(array: Generic.Object[], field = "id") {
     }
 
     return object;
-}
-
-export function clone(object: any) {
-    let cache: any[] = [];
-
-    return JSON.parse(
-        JSON.stringify(object, (_1, value) => {
-            if (typeof value === "object" && value !== null) {
-                if (cache.indexOf(value) > -1) {
-                    return false;
-                }
-                cache.push(value);
-            }
-
-            return value;
-        })
-    );
-}
-
-export function escape(value: string) {
-    return strings.sep + value + strings.sep;
-}
-
-export function filterObjects(
-    array: Generic.Object[],
-    check: {
-        [name: string]: any[];
-    }
-) {
-    if (!array) return false;
-
-    return array.filter(issue => {
-        return Object.keys(check).some(item => {
-            if (!Array.isArray(check[item])) check[item] = [check[item]];
-
-            if (!Object.prototype.hasOwnProperty.call(issue, item)) {
-                return false;
-            }
-
-            return check[item].some(value => value === issue[item]);
-        });
-    });
 }
 
 export function getHistoryColumns(tbl_config: Generic.Object, columns = {}) {
@@ -177,21 +131,6 @@ export function getPreColumns(Database: Generic.Object) {
 
 export function isPromise(object: any) {
     return Object.prototype.toString.call(object) === "[object Promise]";
-}
-
-export function ucfirst(value: string) {
-    return value.substr(0, 1).toUpperCase() + value.substr(1);
-}
-
-export function ucwords(words: string | string[]) {
-    let is_array = Array.isArray(words);
-    if (!Array.isArray(words)) {
-        words = words.split(" ");
-    }
-
-    words = words.map(part => ucfirst(part));
-
-    return is_array ? words : words.join(" ");
 }
 
 export function unescape(value: string) {
